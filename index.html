@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de React | Curso de WEBTD</title>
+</head>
+<body>
+    <center><h1>Fundamentos de React | Curso de WEBTD</h1></center>
+    <hr>
+    <div id="app"></div>
+    
+    
+    <script  src="./assets/js/react.development.js"></script>
+    <script  src="./assets/js/react-dom.development.js"></script>
+    <script  src="./assets/js/babel.js"></script>
+    <script>
+        /* POJO - Plain Old Java Object */
+        /* POJO vs Normal Object */
+       /* let examplePojo = {        //POJO simple
+            titulo: 'WEBTD',
+            localidad: 'MEXICO',
+            fecha: '23-12-2022',
+            cursos: ['Fundamentos de React','Curso de PHP POO Avanzado','Curso de PHP POO','Curso de Laravel'],
+            hablar: function() {
+                console.log(`${this.titulo} localizado en ${this.localidad}. Presenta el curso de ${this.cursos[0]} en fecha ${this.fecha}`)
+            }
+        }
+        console.log(examplePojo)
+        examplePojo.hablar()*/
+        
+       /* let examplePojo2 = new Object() //POJO utilizando la creacion de instancia Object
+        examplePojo2.titulo = 'WEBTD - 2'
+        examplePojo2.localidad = 'MEXICO - 2',
+        examplePojo2.fecha = '23-12-2022',
+        examplePojo2.cursos = ['Fundamentos de React','Curso de PHP POO Avanzado','Curso de PHP POO','Curso de Laravel'],
+        examplePojo2.hablar = function() {
+           console.log(`${this.titulo} localizado en ${this.localidad}. Presenta el curso de ${this.cursos[0]} en fecha ${this.fecha}`) 
+        }
+        console.log(examplePojo2)
+        examplePojo2.hablar()*/
+        /*------------------------------------------------------------------------------------------------------*/
+        /* Creacion de Hola Mundo en React */
+        let holaMundo = {
+            $$typeof: Symbol.for('react.element'), //React comprendera que esto es un elemento de React y no un Objeto Plano
+                                                   // Aparte el $$typeof es una palabra reservada para indicar que se creara un
+                                                   // elemento de React. Esta lienea es obligatoria para la sintaxis de react
+                                                   // el Symbol.for('react.element') es un constructor que generará un unico
+                                                   // identificador de ese elemento.  Para navegadores antiguos u obsoletos se usaba
+                                                   // magicValue para la creacion del identificador unico del elemento. 
+            ref: null,  //Se puede utilizar para almacenar la referencia del elemento DOM correspondiente, despues de ser renderizado.
+                        // se aplica mas que todo cuando se crea componentes react con clases.
+            type: 'p', //Este indica el tipo de etiqueta HTML que se renderizará
+            props: {
+                children: 'Hola Mundo !!!'
+            }
+        }
+        let divElement = document.getElementById('app')
+        //let root = createRoot(divElement)
+        ReactDOM.render(holaMundo, divElement)
+        //root.render(holaMundo)
+    </script>
+</body>
+</html>

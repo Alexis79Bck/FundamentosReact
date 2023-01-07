@@ -10,10 +10,50 @@
     <center><h1>Fundamentos de React - Parte 2 | JSX | Curso de WEBTD</h1></center>
     <hr>
     <div id="app"></div>
+    <hr />
+    <div id="section"></div>
     <script  src="./assets/js/react.development.js"></script>
     <script  src="./assets/js/react-dom.development.js"></script>
     <script  src="./assets/js/babel.js"></script>
 
+    <script type="text/babel"> //para utilizar el compilador BABEL para un script react dentro de las stiquetas script
+            // se debe agregar el atributo type="text/babel"
+
+        /*  JSX -> Es la sintaxis extendida de JavaScript que permite utilizar etiquetas HTML dentro 
+        de la lógica JS, debido a que los navegadores propiamentes no pueden interpretar el codigo JSX
+        se debe utilizar BABEL como compilador o retrocompilador, ya que traduce el lenguaje moderno JSX
+        a uno JS standard y basico para que los navegadores reconozca la logica.*/
+ 
+        const el = <p>Hola Mundo con JSX !!!</p> //BABEL compilara el codigo aqui presentado y devolvera
+                                                 //el resultado en javascript que lo reconozca el navegador    
+        const target = document.querySelector('#app')
+        const root = ReactDOM.createRoot(target)
+        console.log(el);
+        root.render(el)
+        // como buena practica a la variable o constante el cual contendra la sintaxis HTML debe
+        // estar incluida dentro de un parentesis, asi como si fuere parametro de una funcion.
+
+        /** Para evitar el mensaje de error: JSX expressions must have one parent element. 
+            se debe tener una etiqueta contenedora padre para incluir un numero X de elementos
+            HTML en una sola sintaxis JSX. elementos HTML que sirve como contenedores generalmente
+            se utiliza <div> pero puede usarse tambien dentro de <span> o <section> o <nav> o <article>
+            dependiendo del contenido y contexto en la logica a utilizar
+        */
+
+        const el2 = (
+            <span>
+                <p>Primer elemento de react en la variable el2</p>
+                <p>Segundo elemento de react en la variable el2</p>
+            </span>
+        )
+        const otroTarget = document.querySelector('#section')
+        const section = ReactDOM.createRoot(otroTarget)
+        section.render(el2)
+
+
+    </script>
+
+    
 
 
 </body>

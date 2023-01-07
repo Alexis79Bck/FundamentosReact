@@ -40,9 +40,14 @@
         }
         console.log(examplePojo2)
         examplePojo2.hablar()*/
+        
+        
         /*------------------------------------------------------------------------------------------------------*/
-        /* Creacion de Hola Mundo en React */
-        let holaMundo = {
+        /* Creacion de Hola Mundo en React --- Una explicacion de la forma mas básica de crear elementos en react*/
+        /*-------------------------------------------------------------------------------------------------------*/
+        
+        
+        /*let holaMundo = {
             $$typeof: Symbol.for('react.element'), //React comprendera que esto es un elemento de React y no un Objeto Plano
                                                    // Aparte el $$typeof es una palabra reservada para indicar que se creara un
                                                    // elemento de React. Esta lienea es obligatoria para la sintaxis de react
@@ -51,15 +56,92 @@
                                                    // magicValue para la creacion del identificador unico del elemento. 
             ref: null,  //Se puede utilizar para almacenar la referencia del elemento DOM correspondiente, despues de ser renderizado.
                         // se aplica mas que todo cuando se crea componentes react con clases.
-            type: 'p', //Este indica el tipo de etiqueta HTML que se renderizará
+            type: 'p',  //Este indica el tipo de etiqueta HTML que se renderizará
             props: {
-                children: 'Hola Mundo !!!'
-            }
-        }
+                children: 'Hola Mundo !!!',
+                className: 'clase', //React reconoce className como el atributo class de cualquier HTML tag, solo que
+                                    //class es una palabra reservada dentro de la programacion React/JavaScript.
+                style: {            //Se utiliza la propiedad style para darle un estilo inline al elemento/objeto react que se renderizara   
+                    textAlign: 'center',
+                    fontSize: '32px',
+                    fontFamily: 'Tahoma',
+                    color: 'blue'
+                },
+                onClick(syntheticEvent) {
+                    alert('Usted me dio un click')
+                    console.clear
+                    console.log(syntheticEvent)
+                }
+               
+            },
+            
+
+        }*/
+
+        /*Esta forma se realizaba antes de la version 18 de React 
         let divElement = document.getElementById('app')
-        //let root = createRoot(divElement)
-        ReactDOM.render(holaMundo, divElement)
-        //root.render(holaMundo)
+        ReactDOM.render(holaMundo, divElement)*/
+
+        /*Esta forma es como debe renderizarse en este version 18 de React */
+        /*const target = document.querySelector('#app')
+        const root = ReactDOM.createRoot(target)
+        root.render(holaMundo)*/
+
+
+        /*------------------------------------------------------------------------------------------------------*/
+        /* Creacion de Hola Mundo en React utilizando el helper <<React.createElement()>> --------------------- */
+        /*------------------------------------------------------------------------------------------------------*/
+
+        let holaMundo = {
+            $$typeof: Symbol.for('react.element'), 
+            ref: null,  
+            type: 'p',  
+            props: {
+                children: 'Hola Mundo simple!!!',
+                             
+            },
+            
+
+        }
+        // Al utilizar el React factory element, es decir React.createElement(), este lleva 3 parametros:
+        // 1ro. Es el nombre del tag HTML que se creara. asy como el atributo type que se explica arriba.
+        // 2do. Son las propiedades  eventHandlers o controladores de eventos sobre el elemento creado  y/o style
+        //      que deben escribirse como objetos literales, es decir, { key: value }
+        // 3ro. la propiedad children o el contenido de ese elemento, es lo que llevara dentro del elemento react 
+        //      al momento de ser renderizado
+        let nuevoHolaMundo = React.createElement('p', null, 'Hola Mundo con el helper React.createElement() !!!')
+        console.log(nuevoHolaMundo);
+        // Una forma corta de escribir el react element es la siguiente:
+        const el = React.createElement //Instancia una constante con el constructor o factory de react element
+                                            // el nombre puede ser lo que quieras usar... solo trate de ser homogeneo
+                                            // con respecto a lo que este programando
+
+        /*Esta forma es como debe renderizarse en este version 18 de React */
+        const target = document.querySelector('#app')
+        const root = ReactDOM.createRoot(target)
+        //root.render(nuevoHolaMundo)
+        //dentro del root.render invocas la variable del factory y le agregas los parametros que utilizaras
+        root.render(el(
+            'p', 
+           // null,    /* si no se requiere utilizar el className o style o los eventos
+           {
+                className: 'unaClase otraClase',
+                style: {
+                    textAlign: 'center',
+                    fontSize: '32px',
+                    fontFamily: 'Tahoma',
+                    color: 'blue'
+                },
+                onClick(syntheticEvent) {
+                    alert('Usted me dio un click')
+                    console.clear
+                    console.log(syntheticEvent)
+                }
+           },
+            'Hola Mundo con el helper React.createElement() !!!'
+        ))
+
+
     </script>
 </body>
 </html>

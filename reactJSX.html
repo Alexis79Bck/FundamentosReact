@@ -24,17 +24,17 @@
         se debe utilizar BABEL como compilador o retrocompilador, ya que traduce el lenguaje moderno JSX
         a uno JS standard y basico para que los navegadores reconozca la logica.*/
  
-        const el = <p>Hola Mundo con JSX !!!</p> //BABEL compilara el codigo aqui presentado y devolvera
+        //const el = <p>Hola Mundo con JSX !!!</p> //BABEL compilara el codigo aqui presentado y devolvera
                                                  //el resultado en javascript que lo reconozca el navegador    
-        const target = document.querySelector('#app')
-        const root = ReactDOM.createRoot(target)
-        console.log(el);
-        root.render(el)
+        //const target = document.querySelector('#app')
+        //const root = ReactDOM.createRoot(target)
+        //console.log(el);
+        //root.render(el)
         // como buena practica a la variable o constante el cual contendra la sintaxis HTML debe
         // estar incluida dentro de un parentesis, asi como si fuere parametro de una funcion.
 
         /** Para evitar el mensaje de error: JSX expressions must have one parent element. 
-            se debe tener una etiqueta contenedora padre para incluir un numero X de elementos
+            se debe tener una etiqueta contenedora padre (wrapper) para incluir un numero X de elementos
             HTML en una sola sintaxis JSX. elementos HTML que sirve como contenedores generalmente
             se utiliza <div> pero puede usarse tambien dentro de <span> o <section> o <nav> o <article>
             dependiendo del contenido y contexto en la logica a utilizar
@@ -50,7 +50,27 @@
         const section = ReactDOM.createRoot(otroTarget)
         section.render(el2)
 
-
+        /* cualquier elemento creado con JSX, debe si o si contener su correspondiente etiqueta de
+           de cierre, por ejemplo los <form></form>, <label></label>.... pero las etiquetas
+           simples como los <img> <input> <br>... deben ser cerrados con />, es decir,
+           <img />, <input />, <br />*/
+        const el = <div
+                    className = "unaClase otraClase"
+                    style = { { textAlign: "center", fontSize:"24px", fontFamily:"Tahoma", color:"blue"} }
+                    onClick = { function () {
+                        alert("WOW!  acabas de dar un click")
+                    } }>
+                         Hola Mundo con JSX !!! 
+                         { el2 } 
+                    </div>   
+        /*  Ya que se está trabajando en codigo JS, se puede incrustar elementos dentros de otros elementos
+            como variables. Tal como se muestra el codigo de arriba
+        */                       
+        const target = document.querySelector('#app')
+        const root = ReactDOM.createRoot(target)
+        console.log(el);
+        root.render(el)
+        
     </script>
 
     
